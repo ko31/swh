@@ -34,6 +34,7 @@ td {
 </style>
 </head>
 <body>
+<p><a href="get.php">対局履歴を更新</a></p>
 <table>
     <tr>
         <th>対局日時</th>
