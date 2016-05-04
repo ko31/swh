@@ -51,7 +51,13 @@ for ($i=0; $i<$max_page; $i++) {
         $dom_link->each(function ($node_link) use (&$permalink) {
             $permalink = $node_link->attr('href');
         });
-        $ending_time = str_replace('_', '', substr($permalink, -15));
+        $query_pos = strpos($permalink, '?');
+        if ($query_pos === false) {
+            $ending_time = str_replace('_', '', substr($permalink, -15));
+        } else {
+            $pos = -15 - (strlen($permalink) - $query_pos);
+            $ending_time = str_replace('_', '', substr($permalink, $pos, 15));
+        }
         if ($ending_time > $newest_time) {
             $newest_time = $ending_time;
         }
